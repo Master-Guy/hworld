@@ -1,0 +1,102 @@
+#navigation {
+	text-align: center;
+}
+
+.imgInvite {
+	width: 200px;
+	max-height: 200px;
+	min-width: auto;
+}
+
+#images {
+	height: 200px;
+	width: 1100px;
+}
+
+html,
+body {
+	text-decoration: none;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+ul.imgset {
+	display: flex;
+	flex-wrap: wrap;
+	text-decoration: none;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+li.imgset {
+	height: 20vh;
+	flex-grow: 1;
+	text-decoration: none;
+	list-style: none;
+	margin: 0px;
+	padding: 5px;
+}
+
+.img {
+	max-height: 100%;
+	min-width: 100%;
+	object-fit: cover;
+	vertical-align: bottom;
+}
+
+.main-menu {
+	text-align: center;
+}
+
+.main-menu-center {
+	width: 1200px;
+}
+
+.main-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-content: stretch;
+	align-items: flex-start;
+}
+
+.content {
+	order: 1;
+	flex: 0 1 auto;
+	align-self: auto;
+}
+
+@media (max-aspect-ratio: 1/1) {
+	li {
+		height: 30vh;
+	}
+}
+
+@media (max-height: 480px) {
+	li {
+		height: 80vh;
+	}
+}
+
+@media (max-aspect-ratio: 1/1) and (max-width: 480px) {
+	ul {
+		flex-direction: row;
+	}
+
+	li {
+		height: auto;
+		width: 100%;
+	}
+	img {
+		width: 100%;
+		max-height: 75vh;
+		min-width: 0;
+	}
+}
+
+.joinbutton {
+	max-height: 100px;
+}

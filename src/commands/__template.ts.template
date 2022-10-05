@@ -1,0 +1,33 @@
+const ApplicationCommandPermissionMap = global.functions.requireIfExists('/classes/ApplicationCommandPermissionMap.ts');
+const Command = global.functions.requireIfExists('/classes/command.ts');
+
+import { ChatInputCommandInteraction, PermissionFlagsBits } from 'discord.js';
+
+let cmd = new Command(
+	true, // public
+	'commandname', // name
+	'Some command description' // description
+);
+
+cmd.command.setDefaultMemberPermissions(PermissionFlagsBits.Administrator);
+
+cmd.addTestFunction(async function (rawInteraction: ChatInputCommandInteraction) {
+	// Check against interaction permissions
+	let isAllowed = await new ApplicationCommandPermissionMap(rawInteraction.guildId).isAllowed(
+		cmd.name,
+		rawInteraction.guild?.members.cache.get(rawInteraction.user.id),
+		rawInteraction.channel
+	);
+	if (isAllowed.ok === ApplicationCommandPermissionMap.TestResults.DENIED) {
+		return { ok: Command.TestResults.FAILED, message: isAllowed.message };
+	}
+	// Return default
+	return { ok: Command.TestResults.OK, message: cmd.description };
+});
+
+cmd.addSlashCommandInteractionResponseFunction({
+	subcommand: '',
+	function: async (rawInteraction: ChatInputCommandInteraction) => {
+		rawInteraction.reply({ content: 'My reaction', ephemeral: true });
+	},
+});
