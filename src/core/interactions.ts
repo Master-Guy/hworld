@@ -94,7 +94,7 @@ global.registerCommands = async function (p_public = false) {
 		global.registeredSlashCommandInteractionsPublic = returnvalue;
 	} else {
 		let returnvalue = await rest.put(
-			Routes.applicationGuildCommands(global.settings.DiscordClientId, '413371076962156554'),
+			Routes.applicationGuildCommands(global.settings.DiscordClientId, global.settings.ReportingGuild),
 			{
 				body: commandBody,
 			}
