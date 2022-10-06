@@ -16,7 +16,7 @@ let cmd = new Command(
 	'Scan the historical messages, up to 100 and up to 2 weeks old' // description
 );
 
-cmd.command.setDefaultMemberPermissions(PermissionFlagsBits.ViewChannel);
+cmd.command.setDefaultMemberPermissions(PermissionFlagsBits.Administrator);
 
 cmd.command.addSubcommand((option: SlashCommandSubcommandBuilder) =>
 	option.setName('channel').setDescription('Scan only this channel')
